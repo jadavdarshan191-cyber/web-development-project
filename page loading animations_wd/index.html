@@ -1,0 +1,182 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Page Loading Animation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader-screen" id="loaderScreen" role="dialog" aria-modal="true" aria-label="Loading application">
+
+        <div class="loader-content">
+
+            <div class="logo">ADIT<span>.</span></div>
+
+            <!-- Dynamic Graphic Container (Spinner, Dots, Blob, etc.) -->
+            <div class="loader-graphic-container" id="loaderGraphic">
+                <div class="spinner"></div>
+            </div>
+
+            <h1 id="loaderTitle">Preparing Your Experience</h1>
+
+            <p class="loading-text" id="loaderSubtitle">
+                Please wait while we get everything ready...
+            </p>
+
+            <!-- Progress Percentage -->
+            <div class="progress-info">
+                <span>LOADING</span>
+                <span id="percentage">0%</span>
+            </div>
+
+            <!-- Accessible Progress Bar -->
+            <div class="progress-container" role="progressbar" id="progressContainer" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Page loading progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <p class="status-text" id="statusText" aria-live="polite">
+                Initializing...
+            </p>
+
+            <!-- Slow Network Notification -->
+            <p class="slow-hint" id="slowHint" hidden>
+                ⚡ Connection seems slow. Still optimizing assets, hang tight...
+            </p>
+
+        </div>
+
+        <div class="loader-footer">
+            POWERED BY INNOVATION
+        </div>
+
+    </div>
+
+
+    <!-- Main Website -->
+    <main class="main-content" id="mainContent" aria-hidden="true">
+
+        <nav class="navbar">
+            <div class="logo">ADIT CVMU<span>.</span></div>
+            <div class="nav-links">
+                <a href="#studio" class="nav-link">Animation Studio</a>
+            </div>
+        </nav>
+
+        <section class="hero" id="home">
+
+            <div class="badge">
+                ✦ CSS @KEYFRAMES SHOWCASE
+            </div>
+
+            <h1>
+                Custom Loading
+                <span>Animations.</span>
+            </h1>
+
+            <p>
+                A high-performance demonstration of pure CSS <code>@keyframes</code>, smooth progress states,
+                accessible ARIA attributes, and perceived-performance techniques.
+            </p>
+
+            <div class="hero-actions">
+                <button class="primary-btn" id="restartButton">
+                    ↻ Replay Active Loader
+                </button>
+                <button class="secondary-btn" id="viewCodeBtn">
+                    &lt;/&gt; Inspect @keyframes CSS
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Animation Control Studio Section -->
+        <section class="studio-section" id="studio">
+            <div class="studio-card">
+                <div class="studio-header">
+                    <h2>Animation Studio Controls</h2>
+                    <p>Customize the loader below and replay it to preview different UX loading patterns.</p>
+                </div>
+
+                <div class="controls-grid">
+
+                    <!-- Style Picker -->
+                    <div class="control-group">
+                        <label class="control-label">Loader Style</label>
+                        <div class="pill-group" id="styleSelector" role="radiogroup" aria-label="Select loader animation style">
+                            <button type="button" class="pill-btn active" data-style="spinner" role="radio" aria-checked="true">Dual-Ring Spinner</button>
+                            <button type="button" class="pill-btn" data-style="dots" role="radio" aria-checked="false">Staggered Dots</button>
+                            <button type="button" class="pill-btn" data-style="blob" role="radio" aria-checked="false">Liquid Morph Blob</button>
+                            <button type="button" class="pill-btn" data-style="cyber" role="radio" aria-checked="false">Cyber Glow Radar</button>
+                        </div>
+                    </div>
+
+                    <!-- Speed Picker -->
+                    <div class="control-group">
+                        <label class="control-label">Simulation Speed</label>
+                        <div class="pill-group" id="speedSelector" role="radiogroup" aria-label="Select loading simulation speed">
+                            <button type="button" class="pill-btn" data-speed="1200" role="radio" aria-checked="false">Fast (1.2s)</button>
+                            <button type="button" class="pill-btn active" data-speed="3000" role="radio" aria-checked="true">Normal (3s)</button>
+                            <button type="button" class="pill-btn" data-speed="6000" role="radio" aria-checked="false">Slow 3G (6s)</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Accent Theme -->
+                    <div class="control-group">
+                        <label class="control-label">Color Accent</label>
+                        <div class="pill-group" id="colorSelector" role="radiogroup" aria-label="Select color theme">
+                            <button type="button" class="pill-btn active" data-color="blue" role="radio" aria-checked="true">
+                                <span class="color-dot blue-dot"></span> Electric Blue
+                            </button>
+                            <button type="button" class="pill-btn" data-color="purple" role="radio" aria-checked="false">
+                                <span class="color-dot purple-dot"></span> Cyber Purple
+                            </button>
+                            <button type="button" class="pill-btn" data-color="emerald" role="radio" aria-checked="false">
+                                <span class="color-dot emerald-dot"></span> Aurora Emerald
+                            </button>
+                            <button type="button" class="pill-btn" data-color="amber" role="radio" aria-checked="false">
+                                <span class="color-dot amber-dot"></span> Sunset Amber
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 ADIT CVMU. Built with HTML5, CSS3 @keyframes & Vanilla JavaScript.</p>
+        </footer>
+
+    </main>
+
+    <!-- CSS Code Inspector Modal -->
+    <div class="code-modal" id="codeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modalTitle">CSS @keyframes Code Snippet</h3>
+                <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">Here is the exact CSS <code>@keyframes</code> animation and class rule currently in use:</p>
+                <div class="code-box">
+                    <pre><code id="codeSnippetContent">/* Code snippet will appear here */</code></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="primary-btn" id="copyCodeBtn">📋 Copy CSS Snippet</button>
+                <button type="button" class="secondary-btn" id="modalDismissBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
